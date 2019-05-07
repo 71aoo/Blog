@@ -14,6 +14,8 @@
 - 后端框架
 
   - Django 2.1.15
+- 数据库
+  - Django自带sqlite3
 - 使用模块
   - Django-taggit
   - Django-mdeditor
@@ -45,6 +47,8 @@
 - 评论
 - 归档界面UI更换
 - 丰富简介界面内容
+- 实现前后端分离
+- 数据库换成Mysql
 
 。。。
 

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Playwin's blog</title>
+  
+    
+    
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/fonts' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.ttf' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.woff' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.woff2' %}">
+    <!-- 静态渐变色 -->
+    <link rel="stylesheet" href="{% static 'bootstrap/app-style.css' %}">
+    <!-- 动态渐变色 -->
+    <link rel="stylesheet" href="{% static 'bootstrap/style.css' %}"> 
+     <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">   
+    <!-- <link rel="stylesheet" href="../cartoon/css/component.css">
+    <link rel="stylesheet" href="../cartoon/css/default.css"> -->
+
+    
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    
+    
+   
+      .damu-thumbnail img{
+        width: auto;
+
+      }
+      .damu-three{
+        margin-top: 50px;
+      }
+      .tocolor:hover{
+
+        background-color: 	#FFFAFA;  /*鼠标悬停导航栏颜色*/
+
+      }
+      .card_color:hover {
+      background-color: #f5f5f5;
+      box-shadow:0px 0px 100px 0px #000;
+      }
+      .isize{
+      max-width: 35px;
+      position: relative;
+      top: -7px;
+      }
+      .taiji{
+
+        width: 10%;
+      }
+      /* 底部导航图标 */
+      .size{
+        max-width: 30px;
+        position: relative;
+        top: -3px;
+        left:10px;  
+      }
+      /* 头像大小 */
+      .headIcon{
+        max-width: 35px;
+        position: relative;
+        top: -7px;
+      }
+      /* 头部图片大小 */
+      {% block header_img %}
+      .headerSize{
+        
+        background:transparent url(/upload/images/WallpaperStudio10-11235.jpg) no-repeat scroll ;
+        
+        width: 100%;
+        height: 800px;
+      }
+      {% endblock header_img %}
+      .center{
+        border-radius:5px;
+        position: relative;
+        top:-20px;
+        background: rgb(255, 255, 255);
+        box-shadow: 10px 5px 200px rgb(133, 124, 124);
+      }
+    {% block css %}
+    {% endblock css %} 
+    </style>
+
+
+    
+    <script src="{% static 'bootstrap/jquery-3.4.0.min.js' %}"></script>   
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+   
+
+  </head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-fixed-top navbar-transparent navbar-transparent tocolor" role="navigation">
+      <div class="container">
+      
+        <div class="navbar-header">
+            
+          <a class="navbar-brand" href="#">
+            <img class="isize img-circle" alt="Brand" src="/upload/{{ user.head_img }}">
+          </a>
+          <a class="navbar-brand" href="#">
+              Playwin's Blog
+          </a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">             
+              {% for bar in navbar %}
+
+              <li class="active">
+                <a href="{{ bar.url }}">
+                  <span class="{{ bar.word_img }}" aria-hidden="true"></span>
+                    {{ bar.title }}
+                </a>
+              </li> 
+              
+              {% endfor %}
+            
+          </ul> 
+        </div>
+      </div>
+  </nav>
+<!-- header img -->
+  <div class="container-fluid headerSize">
+  </div>
+<!-- main content -->
+{% block content %}
+  <div class="container bg-white center">
+    
+    <h2 class="text-center">
+      you can add
+    </h2>
+    
+  </div>
+{% endblock content %}
+
+{% block bottom_nav %}
+<!-- Bottom navigation bar -->
+<nav class="">
+    <div class="container-fluid">
+      <div class="row ">
+        <div class="col-md-6 ">
+          <div class="navbar-header ">
+            <a class="navbar-brand" href="#">
+                <img class="img-circle size" alt="GitHub" src="../../upload/icon/python_48px_1118083_easyicon.net.png">
+                
+            </a>
+            <a class="navbar-brand" href="#">
+                <img class="img-circle size" alt="GitHub" src="../../upload/icon/django.png">
+                
+            </a>
+            <a class="navbar-brand" href="#">
+                <img class="img-circle size" alt="bootstrap" src="../../upload/icon/bootstrap.png">
+                
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="navbar-header pull-right ">
+              <a class="navbar-brand" href="#">
+                  <img class="img-circle size" alt="bootstrap" src="../../upload/icon/qq.png">
+                  
+              </a>
+              <a class="navbar-brand" href="#">
+                  <img class="img-circle size" alt="GitHub" src="../../upload/icon/GitHub.png">
+                  
+              </a>
+              <a class="navbar-brand" href="#">
+                  <img class="img-circle size" alt="GitHub" src="../../upload/icon/gmail.png">
+                  
+              </a>
+              
+            </div>
+          </div>         
+        </div>                     
+      </div>      
+    </div>    
+  </nav>
+{% endblock bottom_nav %}
+
+{% block script %}
+
+{% endblock script %}   
+<!-- 出现动画 -->
+<script src="{% static '/bootstrap/scrollreveal.js' %}"></script>
+<script>
+    (function(){
+      window.scrollReveal = new scrollReveal({ reset: true, move: '50px'});
+    })();
+</script>
+    
+  </body>
+</html>

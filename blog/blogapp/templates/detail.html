@@ -55,6 +55,13 @@ ul {
     font-size:20px;
     color:#778899;
 }
+.md-img ul li ul li img,
+.md-img ul li p img,
+.md-img ul li img,
+.md-img p img{
+    max-width:100%;
+}
+
 {% endblock css %}
 
 {% block content %}
@@ -86,7 +93,7 @@ ul {
                         </div>
                     </div>     
                     <hr />
-                    <div>
+                    <div class="md-img">
                         {{ article.content |safe }}  
                     </div>                            
                 </div>                    

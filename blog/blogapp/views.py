@@ -8,11 +8,11 @@ import markdown
 
 # 首页
 def index(request):
-    user = User.objects.get(id=1)
+    user = User.objects.first()
     navbar = Navbar.objects.all() #顶部导航栏
     article = Article.objects.all().order_by('-create_time') # 文章列表
     recommend = Recommend.objects.all() # 轮播图
-    one = Recommend.objects.get(id=1) #轮播图第一个标题
+    one = Recommend.objects.first() #轮播图第一个标题
     page_robot = Paginator(article,4)
     page_num = request.GET.get('page')
 

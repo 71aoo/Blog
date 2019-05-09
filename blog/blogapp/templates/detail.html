@@ -49,17 +49,29 @@ ul {
     font-size:20px;
 }
 .sidebar{
-    float:right;
-    position: relative;
-    left:-300px;
+    
+    width:20%;
+    float:left;
+    position:absolute;
+    left:1400px;
     font-size:20px;
-    color:#778899;
+    color:;
+}
+.toc ul li a{
+    text-decoration:;
+    color:	#708090;
 }
 .md-img ul li ul li img,
 .md-img ul li p img,
 .md-img ul li img,
 .md-img p img{
     max-width:100%;
+}
+md-cato{
+    position:absolute;
+    left:1500px;
+    font-size:20px;
+    
 }
 
 {% endblock css %}
@@ -99,14 +111,16 @@ ul {
                 </div>                    
             </div>           
         </div> 
-        <div id="sidebar" class="sidebar">
-            <div class="sidebar__inner">
-                <h3>
-                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 目录
-                </h3>  
-                {{ tob|safe }}
-            </div>
-        </div>  
+        
+            <div id="sidebar" class="sidebar">
+                <div class="sidebar__inner">
+                    <h3>
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 目录
+                    </h3>  
+                    {{ tob|safe }}
+                </div>
+            </div>  
+        
     </div>
 </div>
 

@@ -14,7 +14,7 @@
   - jQuery 3.4.0
 - 后端框架
 
-  - Django 2.1.15
+  - Django 2.1.5
 - 数据库
   - Django自带sqlite3
 - 使用模块

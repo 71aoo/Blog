@@ -204,14 +204,14 @@ body {
       文章标签
     </h2>
     <div class='tags container' data-scroll-reveal="enter bottom over 1s">
-        {% for arti in dates %}
-            {% for tag in arti.tags.all %}
-            <a class="span-c" href="http://127.0.0.1:8000/about/">
+        
+            {% for tag in tags %}
+            <a class="span-c" href="">
                <span class="label  cir">{{ tag }}</span>
             </a>
             {% endfor %}
         
-        {% endfor %}
+        
 
     </div>
 <div class='dd'>

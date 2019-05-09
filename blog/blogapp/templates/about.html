@@ -161,14 +161,14 @@
         文章标签               
     </div>
     <div class='tags container'>
-        {% for arti in article %}
-            {% for tag in arti.tags.all %}
+        
+            {% for tag in tags %}
             <a class="span-c" href="http://127.0.0.1:8000/about/">
                <span class="label  cir">{{ tag }}</span>
             </a>
             {% endfor %}
         
-        {% endfor %}
+        
 
     </div>
 </div>

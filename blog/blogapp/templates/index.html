@@ -342,7 +342,7 @@
                       
                       <div class="carousel-caption">
                         <a href="/detail/{{ item.article.id }}">
-                          <h1>
+                          <h1 style="font-weight:700;font-size: 5rem;">
                             {{ item.article.title }}
                           </h1>  
                           <p style="font-size:20px"> 
@@ -375,14 +375,14 @@
       文章标签
     </h2>
     <div class='tags container' data-scroll-reveal="enter bottom over 1s">
-        {% for arti in article %}
-            {% for tag in arti.tags.all %}
+        
+            {% for tag in tags %}
             <a class="span-c" href="http://127.0.0.1:8000/about/">
                <span class="label  cir">{{ tag }}</span>
             </a>
             {% endfor %}
         
-        {% endfor %}
+       
 
     </div>
   </div>

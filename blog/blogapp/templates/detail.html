@@ -15,7 +15,7 @@
         border-radius:5px;
         width:1000px;
         position: relative;
-        top:-100px;
+        top:-120px;
         left:100px;
         background: rgb(255, 255, 255);
         box-shadow: 10px 5px 200px rgb(133, 124, 124);
@@ -24,10 +24,10 @@ ul {
     list-style-type:none;
 }
 .head{
-   position:absolute;
-   top:200px;
-   left:900px;
+   position:relative;
+   top:-300px;
    color:white;
+   text-align:center;
 }
 .adate{
     height:50px;
@@ -81,8 +81,8 @@ md-cato{
 
 <!-- 文章详情 -->
 
-    <div class='head'>
-        <h1>{{ article.title }}</h1>
+    <div class='head container'>
+        <h1 style="font-weight:700;font-size: 5rem;">{{ article.title }}</h1>
     </div>
 <div id="main-content" class="main"> 
     <div class="row"> 

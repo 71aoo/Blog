@@ -11,9 +11,8 @@
     
     
     <!-- Bootstrap -->
-    <link href="../bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{% static '/bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap/fonts' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css'  %}">
     <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.ttf' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.woff' %}">
@@ -23,8 +22,6 @@
     <!-- 动态渐变色 -->
     <link rel="stylesheet" href="{% static 'bootstrap/style.css' %}"> 
      <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">   
-    <!-- <link rel="stylesheet" href="../cartoon/css/component.css">
-    <link rel="stylesheet" href="../cartoon/css/default.css"> -->
 
     
     <!--[if lt IE 9]>
@@ -155,7 +152,7 @@
         <div class="col-md-6 ">
           <div class="navbar-header ">
             <a class="navbar-brand" href="#">
-                <img class="img-circle size" alt="GitHub" src="/upload/icon/python_48px_1118083_easyicon.net.png">
+                <img class="img-circle size" alt="GitHub" src="/upload/icon/python.png">
                 
             </a>
             <a class="navbar-brand" href="#">
@@ -195,7 +192,7 @@
 
 {% endblock script %}   
 <!-- 出现动画 -->
-<script src="{% static '/bootstrap/scrollreveal.js' %}"></script>
+<script src="{% static '/bootstrap/scrollReveal.js' %}"></script>
 <script>
     (function(){
       window.scrollReveal = new scrollReveal({ reset: true, move: '50px'});

@@ -9,19 +9,12 @@
     <title>Playwin's blog</title>
 
     <!-- Bootstrap -->
-    <link href="../bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{% static '/bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap/fonts' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css'  %}">
     <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.ttf' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.woff' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/fonts/glyphicons-halflings-regular.woff2' %}">
-    
-    
-    <!-- <link rel="stylesheet" href="../cartoon/css/component.css">
-    <link rel="stylesheet" href="../cartoon/css/default.css"> -->
-
-    
     <!--[if lt IE 9]>
       <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
@@ -54,8 +47,7 @@
     .article img{
       width: 70%;
       border-radius:5px;
-      /* transform: scaleY(0.8); */
-      /* box-shadow: 15px 10px 20px rgb(63, 58, 58); */
+      
     }
     .article .title{
       position: relative;
@@ -443,15 +435,15 @@
         <div class="col-md-6 ">
           <div class="navbar-header ">
             <a class="navbar-brand" href="#">
-                <img class="img-circle size" alt="GitHub" src="../../upload/icon/python_48px_1118083_easyicon.net.png">
+                <img class="img-circle size" alt="GitHub" src="/upload/icon/python_48px_1118083_easyicon.net.png">
                 
             </a>
             <a class="navbar-brand" href="#">
-                <img class="img-circle size" alt="GitHub" src="../../upload/icon/django.png">
+                <img class="img-circle size" alt="GitHub" src="./upload/icon/django.png">
                 
             </a>
             <a class="navbar-brand" href="#">
-                <img class="img-circle size" alt="bootstrap" src="../../upload/icon/bootstrap.png">
+                <img class="img-circle size" alt="bootstrap" src="/upload/icon/bootstrap.png">
                 
             </a>
           </div>
@@ -459,15 +451,15 @@
         <div class="col-md-6">
           <div class="navbar-header pull-right ">
               <a class="navbar-brand" href="#">
-                  <img class="img-circle size" alt="bootstrap" src="../../upload/icon/qq.png">
+                  <img class="img-circle size" alt="bootstrap" src="/upload/icon/qq.png">
                   
               </a>
               <a class="navbar-brand" href="#">
-                  <img class="img-circle size" alt="GitHub" src="../../upload/icon/GitHub.png">
+                  <img class="img-circle size" alt="GitHub" src="/upload/icon/GitHub.png">
                   
               </a>
               <a class="navbar-brand" href="#">
-                  <img class="img-circle size" alt="GitHub" src="../../upload/icon/gmail.png">
+                  <img class="img-circle size" alt="GitHub" src="/upload/icon/gmail.png">
                   
               </a>
               
@@ -488,7 +480,7 @@
     <script src="{% static 'bootstrap/jquery-3.4.0.min.js' %}"></script> 
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <!-- 出现动画 -->
-    <script src="{% static '/bootstrap/scrollreveal.js' %}"></script>
+    <script src="{% static '/bootstrap/scrollReveal.js' %}"></script>
      <!-- 弹性动画 -->
     <script src="{% static '/bootstrap/anime.min.js' %}"></script>
     <script src="{% static 'bootstrap/main2.js' %}"></script>
@@ -496,15 +488,10 @@
     <script>
         (function(){
           window.scrollReveal = new scrollReveal({ reset: true, move: '50px'});
-        })();
-    </script>
-    <!-- 弹性动画 -->
-    <script>
-   (function() {	
-      [].slice.call(document.querySelectorAll('.grid--effect-castor > .grid__item')).forEach(function(stackEl) {
+          [].slice.call(document.querySelectorAll('.grid--effect-castor > .grid__item')).forEach(function(stackEl) {
         new CastorFx(stackEl);
       });
-    })();
+        })();
     </script>
   </body>
 </html>

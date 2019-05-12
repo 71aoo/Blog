@@ -2,7 +2,7 @@
 
 - 一个个人blog demo，目前可以使用
 - 食用[教程](./blog使用教程.md)
-- 演示[地址](http://www.playwi0.club)
+- 演示[地址](http://www.playwi0.cn)
 
 #### 项目简介
 

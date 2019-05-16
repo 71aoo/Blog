@@ -14,6 +14,7 @@
 .center1{
         border-radius:5px;
         width:1000px;
+        margin-bottom:20px;
         position: relative;
         top:-120px;
         left:100px;
@@ -70,6 +71,80 @@ md-cato{
     font-size:20px;
     
 }
+/*上下篇文章*/
+.bottomart{  
+    width:1000px;
+    position: relative;
+    top:-120px;
+    left:100px;
+    background: ;
+}
+ .pre,
+.next{
+    display:inline-block;
+    text-align:center;
+    width:475px;
+    border-radius:5px;
+    height:250px;
+    overflow:hidden;
+    background-size:cover;
+    -webkit-background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition:all 0.6s;
+    
+}
+.pre{  
+    float:left;
+    margin-right:20px;
+    
+}
+.next{
+    
+    float:right;
+    
+}
+.pre-p{
+    border-radius:5px 5px 5px 0px;
+    
+    width:100px;
+    height:30px;
+    text-align:center;
+    line-height:30px;
+    background: rgb(255, 255, 255);
+}
+.next-n{
+    
+    position:relative;
+    left:375px;
+    border-radius:5px 5px 0px 5px;
+    width:100px;
+    height:30px;
+    text-align:center;
+    line-height:30px;
+    background: rgb(255, 255, 255);
+}
+.title{
+    position:relative;
+    top:20px;
+    width:%;
+    color:rgb(255, 255, 255);
+    font-weight:700;
+    font-size: 3rem;
+}
+.conten{
+    color:rgb(255, 255, 255);
+    position:relative;
+    
+    top:90px;
+}
+.pre:hover,
+.next:hover{
+    transform: scale(0.9);
+}
+.coo{
+    width:465px;
+}
 
 {% endblock css %}
 
@@ -94,7 +169,7 @@ md-cato{
                     <div class="row">
                         <div class="col-md-3 adate">
                             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                            发布日期:{{ article.create_time |date:"Y-m-d" }}
+                            发布日期:{{ article.create_time |date:"Y-m-d" }} {{ article.has_previous }}
                         </div>
                         <div class="col-md-4 adate">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -105,7 +180,66 @@ md-cato{
                     <div class="md-img">
                         {{ article.content |safe }}  
                     </div>                            
-                </div>                    
+                </div>    
+                <div class="container bottomart">
+                    {% if pre_art %}
+                        <a href='{% url "article_detail" pre_art.id %}'>
+                            <div class="pre" style="background-image:url(/upload/{{ pre_art.img }});">
+                                <div class="pre-p">
+                                    上一篇
+                                </div>
+                                <div class='coo'>
+                                <h1 class="title">{{ pre_art.title }}</h1>
+                                </div>
+                                <p class="conten">asdasda</p>>
+                               
+                                
+                            </div>
+                        </a>
+                    
+                    {% else %}
+                    <a href="#">
+                        <div class="pre" style="background-image:url(/upload/{{ article.img }});">
+                            <div class="pre-p">
+                                本篇
+                            </div>
+                            <h1 class="title">{{ article.title }}</h1>
+                            <p class="conten">{{ article.introduction }}</p>>
+                            
+                            
+                        </div>
+                    </a>
+                    {% endif %}
+
+                     {% if next_art %}
+                        <a href='{% url "article_detail" next_art.id %}'>
+                            <div class="next" style="background-image:url(/upload/{{ next_art.img }});">
+                                <div class="next-n">
+                                    下一篇
+                                </div>
+                                <h1 class="title">{{ next_art.title }}</h1>
+                                <p class="conten">asdasda</p>>
+                                
+                                
+                            </div>
+                        </a>
+                    
+                    {% else %}
+                    <a href="">
+                        <div class="next" style="background-image:url(/upload/{{ article.img }});">
+                            <div class="next-n">
+                                本篇
+                            </div>
+                            <h1 class="title">{{ article.title }}</h1>
+                            <p class="conten">{{ article.introduction }}</p>>
+                            
+                            
+                        </div>
+                    </a>
+                    {% endif %}
+                    
+                         
+                </div>
             </div>           
         </div> 
         
@@ -115,6 +249,7 @@ md-cato{
                         <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 目录
                     </h3>  
                     {{ tob|safe }}
+                    
                 </div>
             </div>  
         
@@ -130,7 +265,9 @@ md-cato{
     $('#sidebar').stickySidebar({
         topSpacing: 50,
         bottomSpacing: 20,
+        
     });
 </script>
+
 
 {% endblock script %}

@@ -104,10 +104,19 @@ def sort(request):
     return render(request,'sort.html',context)
 
 def detail(request, id):
-    
+    pre_flag = 0
+    pre = 0
+    next = 0
     user = User.objects.get(id=1)
     navbar = Navbar.objects.all()
+    all = Article.objects.all().order_by('-id')
     article = get_object_or_404(Article, id=id) 
+    for i in all:
+        if pre_flag == 0 and i.id < id :
+            pre = get_object_or_404(Article, id= i.id)   
+            pre_flag += 1
+        if i.id > id:
+            next = get_object_or_404(Article, id= i.id)   
     md = markdown.Markdown(
         extensions=[
         'markdown.extensions.extra',
@@ -120,61 +129,6 @@ def detail(request, id):
     context['navbar'] = navbar
     context['tob'] = md.toc
     context['user'] = user
+    context['pre_art'] = pre
+    context['next_art'] = next
     return render(request, 'detail.html', context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def first(request):
-#     s = 'This is my fist webpage' # 内容
-#     return HttpResponse(str(s))  # 返回给浏览器
-#
-#
-#
-# def blog(request):
-#     person = People(name='playwin',job='coder')
-#     html = '''
-#     <html>
-#     <body>
-#     {{person.name}}
-#     </body>
-#     </html>
-#
-#     '''
-#     t = Template(html)
-#     c = Context({'person':person})
-#     web = t.render(c)
-#     return HttpResponse(web)
-#
-# def one(request):
-#     a = request.GET['a']
-#     b = request.GET['b']
-#     s = 'a=' + str(a) + '\n' + 'b=' + str(b)
-#     return HttpResponse(str(s))
-#
-#
-# from django.shortcuts import render
-#
-#
-# def home(request):
-#     return render(request, 'index.html')

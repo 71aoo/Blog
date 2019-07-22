@@ -115,23 +115,23 @@
         <div class="col-md-4 iconList" data-scroll-reveal="enter left over 1s">
              <ul style="list-style-type:none">
                  <li>
-                     <a href="">
-                        <img src="/upload/icon/qq.png" alt="" srcset="">
+                     <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin={{ user.qq }}">
+                        <img src="/upload/icon/qq.png">
                      </a>
                  </li>
                  <li>
-                    <a href="">
-                        <img src="/upload/icon/gmail.png" alt="" srcset="">
+                    <a href="mailto:{{ user.email }}">
+                        <img src="/upload/icon/gmail.png">
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <img class="icon-img"  src="/upload/icon/GitHub.png" alt="" srcset="">
+                    <a href="{{ user.github }}">
+                        <img class="icon-img"  src="/upload/icon/GitHub.png">
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <img src="/upload/icon/CN_bilibili.png" alt="" srcset="">
+                    <a href="{{ user.bili }}">
+                        <img src="/upload/icon/CN_bilibili.png">
                     </a>
                 </li>
              </ul>

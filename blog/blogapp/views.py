@@ -132,3 +132,4 @@ def detail(request, id):
     context['pre_art'] = pre
     context['next_art'] = next
     return render(request, 'detail.html', context)
+

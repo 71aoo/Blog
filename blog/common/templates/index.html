@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'index/css/index.css' %}">
+{% endblock  %}
+
+{% block img_height %}
+
+.header-img {
+width: auto;
+height: 950px;
+background-position:center center;
+}
+
+{% endblock %}
+
+{% block header_img %}
+
+<div class="header-img" style="background: url(/media/{{ header_img.img }}) no-repeat center center;">
+
+  <div class="my">
+    <div class="my-id text-light">
+      <span id="my-id"></span>
+    </div>
+    <div class="my-motto text-white">
+      <h2><span id="my-motto"></span></h2>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <!-- article list -->
+    {% for Article in Articles %}
+      <div class="card text-center card-div" >
+        <div class="card-body">
+          <a href="{% url 'article:article' Article.id %}" style="text-decoration: none;">
+            <h5 class="card-title card-title-font text-muted"><i class="fas fa-heading"></i> {{ Article.title }}</h5>
+          </a>
+          <div class="card-subtitle mb-2">
+            <a href="{% url 'article:category' Article.category.id %}" style="text-decoration: none;">
+              <div class="text-muted" style="display:inline;padding-right: 0px;"><i class="fas fa-bookmark fa-1x"></i> {{ Article.category }}
+              </div>
+            </a>
+            <i class="fas fa-angle-right"></i>
+            <div class="tag-c" style="display:inline;padding-right: 20px;">
+              <i class="fas fa-tag"></i>
+                {% for tag in Article.tags.all %}
+                    {% if forloop.first %}
+                        {{ tag.name }}
+                    {% else %}
+                        <strong>·</strong>
+                        {{ tag.name }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div style="display:inline;"><i class="fas fa-calendar-alt"></i> {{ Article.created_time|date:"Y-m-d" }}</div>
+          </div>
+          <a href="{% url 'article:article' Article.id %}" style="text-decoration: none;">
+            <div class="card-img-middle" style="background-image: url('media/{{ Article.img.img }}');"></div>
+            <p class="card-text text-muted">
+                {{ Article.intro }}
+            </p>
+          </a>
+          <hr>
+          <a href="{% url 'article:article' Article.id %}" class="card-link card-link-left text-muted"><i class="fas fa-ellipsis-h fa-2x"></i></a>
+          <a href="#" class="card-link card-link-right">Another link</a>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- type motto -->
+<script type="text/javascript">
+  var typed2 = new Typed('#my-id', {
+    strings: ["Welcome to", "{{ Info.name }}'s Blog"],
+    typeSpeed: 70,
+    backSpeed: 0,
+    fadeOut: true,
+    cursorChar: '',
+  });
+
+  
+
+  window.setTimeout("typed()", 5000);
+
+  function typed() {
+    var typed1 = new Typed('#my-motto', {
+      strings: [
+      {% for foo in Motto %}
+          "{{ foo.context }}",
+      {% endfor %}
+      ],
+      typeSpeed: 70,
+      backSpeed: 0,
+      fadeOut: true,
+      loop: true,
+      cursorChar: '_',
+    });
+  }
+</script>
+
+{% endblock %}

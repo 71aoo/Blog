@@ -1,0 +1,150 @@
+.grid a {
+    text-decoration:none;
+}
+.grid {
+    /* position: relative;
+    top:200px; */
+    width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	/* padding: 0 7em; */
+    /* background-color:	#F5F5F5; */
+    /* border-radius:10px; */
+    /* box-shadow: 10px 5px 200px rgb(133, 124, 124); */
+    
+}
+
+.grid__item {
+	position: relative;
+	display: block;
+	flex: none;
+	width: 250px;
+	margin: 1.5em 2vw;
+	cursor: default;	
+	transform-style: preserve-3d;
+}
+
+.grid__item:hover,
+.grid__item:focus {
+	outline: none;
+}
+
+.grid__item--c1,
+.grid__item--c1:hover,
+.grid__item--c1:focus {
+	color: #52649e;
+}
+
+.grid__item--c2,
+.grid__item--c2:hover,
+.grid__item--c2:focus {
+	color: #ee7074;
+}
+
+.grid__item--c3,
+.grid__item--c3:hover,
+.grid__item--c3:focus {
+	color: #f7f295;
+}
+
+.stack {
+    position: relative;
+    /* width有变动，同时更改height和.grid__item-caption的width*/
+    width: 180px;
+	height: 180px;
+	margin-left: auto;
+	margin-right: auto;
+	transform-style: preserve-3d;
+}
+
+.stack__deco {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+    height: 100%;
+    border-radius:50%;
+    transform-origin: 50% 100%;
+    overflow:hidden;
+    background-size:cover;
+    -webkit-background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.stack__deco:first-child {
+	opacity: 0.2;
+}
+
+.stack__deco:nth-child(2) {
+	opacity: 0.4;
+}
+
+.stack__deco:nth-child(3) {
+	opacity: 0.6;
+}
+
+.stack__deco:nth-child(4) {
+	opacity: 0.8;
+}
+
+.stack__figure {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+    transform-origin: 50% 100%;
+    border-radius:50%;
+}
+
+.stack__img {
+	position: relative;
+	display: block;
+    flex: none;
+    border-radius:50%;
+    /* transform:scale(0.3); */
+}
+
+.grid__item-caption {
+	position: relative;
+	display: flex;
+    flex-wrap: wrap;
+    /* width有变动，同时更改.stack的width */
+    width: 250px; 
+    text-align: center;
+    word-break:break-all;
+	transform-style: preserve-3d;
+}
+
+.grid__item-title {
+	font-size: 2em;
+	width: 100%;
+	text-align: center;
+	color:	#191970;
+}
+
+
+
+/* Individual effects */
+
+
+
+/* Canopus */
+.grid--effect-canopus {
+	perspective-origin: 50% 0%;
+}
+
+.grid--effect-canopus .column {
+	opacity: 1;
+}
+
+.grid--effect-canopus .stack__figure,
+.grid--effect-canopus .stack__deco {
+	transform-origin: 50% 100%;
+}

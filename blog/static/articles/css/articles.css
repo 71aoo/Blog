@@ -1,0 +1,89 @@
+.article-title{
+    margin-top: -30px;
+}
+
+/* 图片    */
+.article-content ul li ul li img,
+.article-content ul li p img,
+.article-content ul li img,
+.article-content p img{
+    max-width:100%;
+}
+
+/*
+ * 文章分类
+ * 文章标签
+ * 文章时间
+ */
+
+.article-some {
+    padding-top: 10px;
+}
+
+.article-some .article-category .inline,
+.article-some .article-tags .inline,
+.article-some .article-time .inline {
+
+    display: inline;
+}
+
+.article-some .article-time {
+    float: right;
+}
+
+.inline {
+    font-color: #34495e;
+}
+.article-tags{
+    padding-left: 10px;
+}
+
+/* 小标题 */
+.article-toc {
+    position: sticky;
+    top: 30px;
+}
+
+.toc {
+    position: relative;
+    top: 50px;
+}
+.toc ul li a{
+    color: #34495e;
+}
+
+/* 文章内容 */
+.article-content{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    font-size: 1.2rem;
+    
+}
+
+/* 文章div动画 */
+.article{
+    
+    -moz-transition: all 0.5s ease; 
+    -webkit-transition: all 0.5s ease; 
+    transition: all 0.5s ease; 
+    -o-transition: all 0.5s ease;
+}
+.article:hover{
+
+    border-radius: 10px;
+    box-shadow: 0px 5px 30px #adacac;
+    transform: translate( 0px, -50px);
+}
+.card{
+    width: 100%;
+    padding: 0;
+    -moz-transition: all 0.5s ease; 
+    -webkit-transition: all 0.5s ease; 
+    transition: all 0.5s ease; 
+    -o-transition: all 0.5s ease;
+}
+.card:hover{
+
+    transform: scale(0.9);
+}

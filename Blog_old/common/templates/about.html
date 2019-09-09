@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+base
+{% endblock %}
+
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"
+    integrity="sha256-XNiBJGZuErA+MsbKwxuTqNMimobZMsVS79SkTUroRz4=" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block img_height %}
+.header-img {
+width: auto;
+height: 500px;
+background-position: center center;
+}
+{% endblock %}
+
+
+{% block header_img %}
+<div class="header-img" style="background: url(/media/{{ header_img.img }}) no-repeat center center;">
+</div>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="blog-data">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <a href="" class="posi-l text-muted">
+                            <p class="title">文章</p>
+                            <p class="num">23</p>
+                        </a>
+
+                    </div>
+                    <div class="col-md-3">
+                        <a href="" class="posi-l text-muted">
+                            <p class="title">文章</p>
+                            <p class="num">23</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="" class="posi-l text-muted">
+                            <p class="title">文章</p>
+                            <p class="num">23</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="my">
+                <div class="my-img">
+                    <img class="rounded-circle " src="/media/{{ Info.header_img }}" alt="" style="max-width: 200px;">
+                </div>
+                <div class="my-id text-center">
+                    <h3>Playwi0</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="connet">
+                    <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <a href="" class="posi-r">
+                                    <span style="font-size: 2.5em; color: #007bff;">
+                                        <i class="fab fa-qq"></i>
+                                    </span>
+                                </a>
+            
+                            </div>
+                            <div class="col-md-3">
+                                <a href="" class="posi-r">
+                                    <span style="font-size: 2.5em; color: #007bff80;">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </a>
+            
+                            </div>
+                            <div class="col-md-3">
+                                <a href="" class="posi-r">
+                                    <span style="font-size: 2.5em; color: #00000080;">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                </a>
+            
+                            </div>
+                        </div>
+            </div>
+            
+
+        </div>
+    </div>
+    <div class="container intro">
+        <div class="intro-content text-center ">
+            浏览创立之日起近2年半历史主题帖、200多精华分享与后续更多更新内容，一次付费，终身阅读
+专享每周更新的 #解读PHPINFO#、#Java安全漫谈#、#奇技淫巧#、#神器分享# 等专题知识
+不定期给出包含各种小tricks的代码审计练习题
+        </div>
+    </div>
+    <hr>
+    <div class="container text-center">
+        <h2>Article Chart</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="pie" style="width: 100%;height:500px;"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="lou" style="width: 100%;height:500px;"></div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('pie'), 'light');
+
+    option = {
+        series: [{
+            name: '访问来源',
+            type: 'pie',
+            radius: '70%',
+            roseType: 'angle',
+            data: [
+                {% for category,num in categories_and_num.items %}
+                {
+                    value: {{ num }},
+                    name: '{{ category }}'
+                },
+                {% endfor %}
+            ],
+            "label": {
+                "normal": {
+                    "show": true,
+                    "textStyle": {
+                        "fontSize": 15
+                    }
+                },
+            }
+
+
+        }]
+    };
+    myChart.setOption(option);
+</script>
+<script type="text/javascript">
+var myChart = echarts.init(document.getElementById('lou'), 'light');
+var option = {
+
+    calendar: [
+    {
+        orient: 'vertical',
+        yearLabel: {
+            margin: 50,
+            fontSize:30,
+        },
+        monthLabel: {
+            fontSize:20,
+            margin: 20
+        },
+        cellSize: 50,
+        top: 'middle',
+        left: 'center',
+        range: '{{ range }}'
+    },
+   ],
+
+    series: [ {
+        type: 'effectScatter',
+        coordinateSystem: 'calendar',
+        data: [
+            {% for time,num in articles_time_num.items %}
+                ["{{ time }}",{{ num }} ],
+            {% endfor %}
+            ]
+    }]
+};
+myChart.setOption(option);
+
+</script>
+
+{% endblock %}
+
+
+{% block script %}
+
+
+{% endblock %}

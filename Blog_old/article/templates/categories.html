@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    base
+{% endblock %}
+
+
+{% block link %}
+    <link rel="stylesheet" href="{% static '/category/css/category.css' %}">
+    <link rel="stylesheet" href="https://www.bootcss.com/p/buttons/css/buttons.css">
+{% endblock %}
+
+{% block img_height %}
+    .header-img {
+    width: auto;
+    height: 500px;
+    background-position: center center;
+    }
+{% endblock %}
+
+{% block header_img %}
+    <div class="header-img" style="background: url(/media/{{ header_img.img }}) no-repeat center center;">
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="categories">
+            <div class="categories-title text-center">
+                文章分类
+            </div>
+            <div class="categories-item text-center">
+                {% for category in categories %}
+                    <div class="category-pad">
+                        <a href="{% url 'article:category' category.id %}"
+                           class="button button-glow button-border button-pill category {{ category.color }}">
+                            {{ category }}
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="articles-list container">
+            {% for category in categories %}
+                <div class="row">
+                    <div class="col-md-3">
+                        <h1 class="text-muted">
+                            <span style="font-size: 0.9em; color: Dodgerblue;">
+                                <i class="fas fa-bookmark fa-1x"></i>
+                            </span>
+                            {{ category.name }}
+                        </h1>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-8">
+                        {% for article in category.articles_set.all %}
+                        <a href="{% url 'article:article' article.id %}" style="color: darkgray">
+                            <div class="article-title text-muted">
+                                <h1>{{ article.title }}</h1>
+                            </div>
+                        </a>
+                        <div class="article-intro">
+                            <p>{{ article.intro }}</p>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+                    
+            
+            {% endfor %}
+        </div>
+    </div>
+
+    
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

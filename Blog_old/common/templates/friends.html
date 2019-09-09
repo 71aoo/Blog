@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- title -->
+{% block title %}
+friends
+{% endblock %}
+
+<!-- link -->
+{% block link %}
+<link rel="stylesheet" href="{% static 'friends/css/friends.css' %}">
+{% endblock  %}
+
+<!-- header_img -->
+{% block img_height %}
+
+.header-img {
+    width: auto;
+    height: 400px;
+}
+
+{% endblock %}
+
+<!-- script -->
+{% block header_img %}
+<div class="header-img"
+    style="background: url(/media/{{ header_img.img }}) no-repeat center;"></div>
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+<div class="grid grid--effect-canopus">
+    {% for friend in Friends %}
+        <a href="{{ friend.link }}" class="grid__item grid__item--c1">
+        <div class="stack">
+            <div class="stack__deco" style="background-image:url(/media/{{ friend.header_img }});"></div>
+            <div class="stack__deco" style="background-image:url(/media/{{ friend.header_img }});"></div>
+            <div class="stack__deco" style="background-image:url(/media/{{ friend.header_img }});"></div>
+            <div class="stack__figure">
+                <img class="stack__img" src="/media/{{ friend.header_img }}" alt="Image">
+            </div>
+        </div>
+        <div class="grid__item-caption">
+            <h3 class="grid__item-title">{{ friend.name }}</h3>
+        </div>
+    </a>
+    
+    
+    {% endfor %}
+    
+
+
+</div>
+
+{% endblock %}
+
+<!-- script -->
+{% block script %}
+<script src="{% static 'friends/js/img.js' %}"></script>
+<script src="{% static 'friends/js/anime.min.js' %}"></script>
+<script type="text/javascript">
+    (function () {
+
+        [].slice.call(document.querySelectorAll('.grid--effect-canopus > .grid__item')).forEach(function (stackEl) {
+            new CanopusFx(stackEl);
+        });
+
+    })();
+</script>
+
+{% endblock %}

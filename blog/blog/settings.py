@@ -85,24 +85,24 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-# mysql
-# pymysql.install_as_MySQLdb()
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'Blog',
-#         'USER':'root',
-#         'PASSWORD':'root',
-#         'HOST':'127.0.0.1',
-#         'PORT':'3306',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+# mysql
+pymysql.install_as_MySQLdb()
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Blog',
+        'USER':'root',
+        'PASSWORD':'root',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -122,6 +122,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/log.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

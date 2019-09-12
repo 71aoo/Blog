@@ -18,9 +18,9 @@ a {
 }
 .card-div:hover{
     
-    box-shadow: 0px 5px 30px #adacac;
+    box-shadow:5px 5px 50px 1px #34495e;
     transform: translate( 0px, -10px);
-    /* transform: scale(1.03); */
+    
 }
 
 .card-title-font {
@@ -44,6 +44,9 @@ a {
     transition: background-size 0.5s ease; 
     -o-transition: background-size 0.5s ease;
     
+    
+}
+.card-link{
     
 }
 .card-img-middle:hover{
@@ -109,8 +112,34 @@ a {
     font-size: 7rem;
     
 }
-/* bottom */
-/* .bottom{
-    margin-top: 
-} */
+/* ??? */
+.pre-next{
+    width: 730px;
+}
+.pre-next div{
+    display: inline;
+}
+.pre{
+    float: left;
+    
+}
+.page{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.5em;
+    font-weight: 500;
+    position: relative;
+    top: 6px;
+}
+.next{
+    float: right;
+}
+.next-ani,
+.pre-ani{
+    transition: all 1.0s;
+}
+.next-ani:hover,
+.pre-ani:hover{
+    transform: scale(1.5);
+}
 

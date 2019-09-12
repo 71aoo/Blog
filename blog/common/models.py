@@ -9,14 +9,28 @@ class Motto(models.Model):
     def __str__(self):
         return self.context
 
+# project
+class Projects(models.Model):
+    awesome_font = models.CharField(max_length=100, null=False, blank=False, verbose_name="项目Awesome-font图标")
+    awesome_font_color = models.CharField(max_length=100, null=False, blank=False, verbose_name="图标颜色")
+    name = models.CharField(max_length=50, null=False, blank=False, verbose_name="项目名")
+    intro = models.TextField(null=True,blank=True, verbose_name="项目简介")
+    link = models.TextField(null=False, blank=False, verbose_name="项目地址")
+
+    def __str__(self):
+        return  self.name
+
+
 # my information
 class Info(models.Model):
     name = models.CharField(max_length=50,verbose_name="ID", blank=False, null=False)
     motto = models.ForeignKey(Motto, null=True, blank=True, on_delete="CASCADE")
+    intro = models.TextField(null=True, blank=True)
     header_img = models.ImageField(verbose_name="头像")
     QQ = models.CharField(max_length=12, verbose_name="QQ", blank=True, null=True)
     email = models.CharField(max_length=100, verbose_name="邮箱", blank=True, null=True)
     github = models.TextField(verbose_name="github", blank=True, null=True)
+    Projects = models.ForeignKey(Projects, on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self):
         return self.name

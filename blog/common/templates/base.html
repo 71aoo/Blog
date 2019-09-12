@@ -93,6 +93,12 @@
                 background-size: 1920px 1080px;
             }
         }
+        .nav-img{
+            transition: all 1.0s;
+        }
+        .nav-img:hover{
+            transform: rotate(360deg);
+        }
     </style>
 </head>
 
@@ -102,7 +108,7 @@
     <div class="container">
         <!-- 导航栏左 -->
         <div class="navbar-brand text-light">
-            <img class="rounded-circle" src="/media/{{ Info.header_img }}" alt="" style="max-width: 40px;">
+            <img class="rounded-circle nav-img" src="/media/{{ Info.header_img }}" alt="" style="max-width: 40px;">
             <strong>{{ Info.name }}'s Blog</strong>
         </div>
         <!-- 导航栏右 -->

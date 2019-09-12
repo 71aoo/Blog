@@ -67,11 +67,69 @@ background-position:center center;
             </p>
           </a>
           <hr>
-          <a href="{% url 'article:article' Article.id %}" class="card-link card-link-left text-muted"><i class="fas fa-ellipsis-h fa-2x"></i></a>
-          <a href="#" class="card-link card-link-right">Another link</a>
+          <a href="{% url 'article:article' Article.id %}" class="card-link card-link-left text-muted"><i
+              class="fas fa-ellipsis-h fa-2x"></i></a>
+          <a href="{% url 'article:article' Article.id %}" class="card-link card-link-right text-muted">
+            <span style="font-size: 1.3em; color: #6c757d;">
+              <i class="fas fa-eye fa-1x"></i>
+            </span>{{ Article.total_views }}
+          </a>
+          <a href="{% url 'article:article' Article.id %}" class="card-link card-link-right text-muted">
+            <span style="font-size: 1.3em; color: #6c757d;">
+              <i class="fas fa-comment-dots fa-1x"></i>
+            </span>{{ Article.comments_set.all|length }}
+          </a>
         </div>
       </div>
     {% endfor %}
+
+    <!-- ???? -->
+    <div class="container pre-next text-center">
+          {% if Articles.has_previous %}
+          <div class="pre pre-ani">
+            <a href="?page={{ Articles.previous_page_number }}">
+              <span style="font-size: 2em; color: #28a745;">
+                <i class="fas fa-chevron-circle-left"></i>
+              </span>
+            </a>
+          </div>
+        {% else %} 
+        <div class="pre" title="这是第一页">
+          <a href="javascript:return false;">
+            <span style="font-size: 2em; color: #6c757d;">
+              <i class="fas fa-chevron-circle-left"></i>
+            </span>
+          </a>
+        </div>
+        {% endif %}
+      <div class="page">
+        Page {{ Articles.number }} of {{ pagerang.num_pages }}
+      </div>
+        {% if Articles.has_next %}
+        <div class="next next-ani">
+          <a href="?page={{ Articles.next_page_number }}">
+            <span style="font-size: 2em; color: #28a745;">
+              <i class="fas fa-chevron-circle-right"></i>
+            </span>
+          </a>
+        </div>
+        {% else %}
+        <div class="next" title="这是最后一页">
+          <a href="javascript:return false;">
+            <span style="font-size: 2em; color: #6c757d;">
+              <i class="fas fa-chevron-circle-right"></i>
+            </span>
+          </a>
+        </div>
+        {% endif %}
+        <!-- <a href="">
+          <span style="font-size: 2em; color: #34495e;">
+            <i class="fas fa-chevron-circle-right"></i>
+          </span>
+        </a> -->
+
+      
+    </div>
 </div>
 {% endblock %}
 

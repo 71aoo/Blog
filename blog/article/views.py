@@ -18,6 +18,13 @@ def articles(request, id):
     all_articles = Articles.objects.all().order_by('-id')
     article = get_object_or_404(Articles, id=id)
 
+    # 当前文章访问量
+    article.total_views += 1
+    article.save(update_fields=['total_views'])
+
+    # 获取当前文章所有评论
+    all_comments = article.comments_set.all()
+
     # 获得上下篇文章
     for i in all_articles:
         if pre_flag == 0 and i.id < id:
@@ -43,6 +50,7 @@ def articles(request, id):
     context['tob'] = md.toc
     context['next_article'] = next_article
     context['pre_article'] = pre_article
+    context['all_comments'] = all_comments
 
     return render(request, 'article.html',context)
 
@@ -55,9 +63,12 @@ def category(request,id):
     images = Images.objects.all()
     category = get_object_or_404(Categories,id=id)
     articles = category.articles_set.all().order_by("-created_time")
-    num = random.randint(0, len(images) - 1)
+    if images:
+        num = random.randint(0, len(images) - 1)
+        context['header_img'] = images[num]
 
-    context['header_img'] = images[num]
+
+
     context['Navbar'] = navbar
     context['Info'] = info
     context['categories'] = categories
@@ -73,9 +84,10 @@ def categories(request):
     info = Info.objects.first()
     categories = Categories.objects.all()
     images = Images.objects.all()
-    num = random.randint(0, len(images) - 1)
+    if images:
+        num = random.randint(0, len(images) - 1)
+        context['header_img'] = images[num]
 
-    context['header_img'] = images[num]
     context['Navbar'] = navbar
     context['Info'] = info
     context['categories'] = categories

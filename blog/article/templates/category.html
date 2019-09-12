@@ -21,6 +21,18 @@ background-position: center center;
 {% block link %}
 <link rel="stylesheet" href="{%  static '/category/css/category.css' %}">
 <link rel="stylesheet" href="https://www.bootcss.com/p/buttons/css/buttons.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"
+    integrity="sha256-XNiBJGZuErA+MsbKwxuTqNMimobZMsVS79SkTUroRz4=" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400&
+              text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY9%26" rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400italic&
+              text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY+/,'Ã©" rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=PT+Sans+Caption:700&text=PEAGSRLUVFYCOBNTJMDOH1234567890,'
+    rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Crimson+Text:700italic&
+              text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Merriweather:400&
+              text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 
@@ -65,7 +77,7 @@ background-position: center center;
             {% for article in articles %}
                 <a href="{% url 'article:article' article.id %}" style="color: darkgray">
                 <div class="article-title text-muted">
-                    <h1>{{ article.title }}</h1>
+                    <h1 style="font-family: 'Crimson Text','Verdana',sans-serif;">{{ article.title }}</h1>
                 </div>
                 </a>
                 <div class="article-intro">

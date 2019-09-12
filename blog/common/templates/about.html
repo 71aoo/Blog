@@ -14,11 +14,12 @@ base
 {% endblock %}
 
 {% block img_height %}
-.header-img {
-width: auto;
-height: 500px;
-background-position: center center;
-}
+    .header-img {
+        width: auto;
+        height: 500px;
+        background-position: center center;
+    }
+
 {% endblock %}
 
 
@@ -30,48 +31,53 @@ background-position: center center;
 
 {% block body %}
 <div class="container">
+    <!-- 信息 -->
     <div class="row">
+        <!-- 左边 -->
         <div class="col-md-4">
+            
             <div class="blog-data">
                 <div class="row text-center">
                     <div class="col-md-3">
-                        <a href="" class="posi-l text-muted">
+                        <a href="{% url 'common:archive' %}" class="posi-l text-muted" style="text-decoration:none;">
                             <p class="title">文章</p>
-                            <p class="num">23</p>
+                            <p class="num">{{ articles_num }}</p>
                         </a>
 
                     </div>
                     <div class="col-md-3">
-                        <a href="" class="posi-l text-muted">
-                            <p class="title">文章</p>
-                            <p class="num">23</p>
+                        <a href="{% url 'article:categories' %}" class="posi-l text-muted" style="text-decoration:none;">
+                            <p class="title">分类</p>
+                            <p class="num">{{ articles_categories_num }}</p>
                         </a>
                     </div>
                     <div class="col-md-3">
-                        <a href="" class="posi-l text-muted">
-                            <p class="title">文章</p>
-                            <p class="num">23</p>
+                        <a href="#" class="posi-l text-muted" style="text-decoration:none;">
+                            <p class="title">标签</p>
+                            <p class="num">{{ articles_tag_num }}</p>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- 头像 -->
         <div class="col-md-4">
             <div class="my">
-                <div class="my-img">
-                    <img class="rounded-circle " src="/media/{{ Info.header_img }}" alt="" style="max-width: 200px;">
+                <div class="my-img-div">
+                    <img class="rounded-circle my-img" src="/media/{{ Info.header_img }}" alt="" style="max-width: 200px;">
                 </div>
                 <div class="my-id text-center">
-                    <h3>Playwi0</h3>
+                    <h3>{{ Info.name }}</h3>
                 </div>
             </div>
         </div>
+        <!-- 右边 -->
         <div class="col-md-4">
             <div class="connet">
                     <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-3">
-                                <a href="" class="posi-r">
+                                <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin={{ Info.QQ }}" class="posi-r">
                                     <span style="font-size: 2.5em; color: #007bff;">
                                         <i class="fab fa-qq"></i>
                                     </span>
@@ -79,7 +85,7 @@ background-position: center center;
             
                             </div>
                             <div class="col-md-3">
-                                <a href="" class="posi-r">
+                                <a href="mailto:{{ Info.email }}" class="posi-r">
                                     <span style="font-size: 2.5em; color: #007bff80;">
                                         <i class="fas fa-envelope"></i>
                                     </span>
@@ -87,7 +93,7 @@ background-position: center center;
             
                             </div>
                             <div class="col-md-3">
-                                <a href="" class="posi-r">
+                                <a href="{{ Info.github }}" class="posi-r" target="_blank">
                                     <span style="font-size: 2.5em; color: #00000080;">
                                         <i class="fab fa-github"></i>
                                     </span>
@@ -100,16 +106,21 @@ background-position: center center;
 
         </div>
     </div>
+    <!-- 个人简介 -->
     <div class="container intro">
         <div class="intro-content text-center ">
-            浏览创立之日起近2年半历史主题帖、200多精华分享与后续更多更新内容，一次付费，终身阅读
-专享每周更新的 #解读PHPINFO#、#Java安全漫谈#、#奇技淫巧#、#神器分享# 等专题知识
-不定期给出包含各种小tricks的代码审计练习题
+           {{ Info.intro }}
         </div>
     </div>
     <hr>
+    <!-- 文章图表 -->
     <div class="container text-center">
-        <h2>Article Chart</h2>
+        <h2> 
+            <span style="font-size: 1em; color: #34495e;">
+                <i class="fas fa-chart-pie"></i>
+            </span>
+            Article Chart
+        </h2>
         <div class="row">
             <div class="col-md-6">
                 <div id="pie" style="width: 100%;height:500px;"></div>
@@ -120,6 +131,48 @@ background-position: center center;
         </div>
         
         
+    </div>
+    <hr>
+    <!-- 所有标签 -->
+    <div class="container text-center">
+        <h2>
+            <span style="font-size: 1em; color: #34495e;">
+                <i class="fas fa-tags"></i>
+            </span>
+            All Tags
+        </h2>
+        <div class="tag container">
+            {% for tag in articles_tags %}
+                <a href="" class="tag-name " style="text-decoration: none;"><span>{{ tag }}</span></a>
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    <!-- 我的项目 -->
+    <div class="container text-center">
+        <h2>
+            <span style="font-size: 1em; color: #34495e;">
+                <i class="fas fa-project-diagram"></i>
+            </span>
+            My Projects
+        </h2>
+        <div class="items">
+            <div class="row">
+                {% for  project in projects %}
+                <div class="col-md-4">
+                    <div class="item" style="display: inline;">
+                        <a href="{{ project.link }}" style="text-decoration: none;">
+                            <span style="font-size: 4em; color: {{ project.awesome_font_color }};">
+                                <i class="fas {{ project.awesome_font }}"></i>
+                            </span>
+                            <h4 class="" style="color: #1a1e21;">{{ project.name }}</h4>
+                            <p class="text-muted">{{ project.intro }}</p>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 

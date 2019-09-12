@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'common',
     'mdeditor',
     'taggit',
+    'comments'
 ]
 
 MIDDLEWARE = [

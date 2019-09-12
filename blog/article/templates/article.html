@@ -33,8 +33,10 @@ height: 400px;
 <div class="container-fluid" style="margin-top: 50px;">
     <div class="row">
         <div class="col-md-2"></div>
+        <!-- 文章相关区 -->
         <div class="col-md-6">
             <div class="container-fluid">
+                <!-- 文章内容 -->
                 <div class="article">
                     <div class="article-title text-center text-muted">
                         <h1>
@@ -56,6 +58,7 @@ height: 400px;
                                 </h5>
                             </a>
                         </div>
+                        <!-- 标签 -->
                         <div class="article-tags" style="display: inline;">
                             <h5 class="inline">
                                 <span style="font-size: 0.8em; color: Mediumslateblue;">
@@ -71,6 +74,7 @@ height: 400px;
                                 {% endfor %}
                             </h5>
                         </div>
+                        <!-- 发布时间 -->
                         <div class="article-time" style="display: inline;">
                             <h5 class="inline">
                                 <span style="font-size: 0.9em; color: Tomato;">
@@ -81,11 +85,13 @@ height: 400px;
                         </div>
                     </div>
                     <hr>
+                    <!-- 文章内容 -->
                     <div class="article-content text-muted">
                         <h3>{{ article.content |safe }}</h3>
                     </div>
                 </div>
-                <div class="article-more">
+                <!-- 上下篇 -->
+                <div class="article-more" style="margin-bottom: 50px">
                     <div class="row">
                         <div class="col-md-6">
                             {% if pre_article %}
@@ -133,19 +139,95 @@ height: 400px;
                     </div>
 
                 </div>
+                <hr>
+                <!-- 评论 -->
+                <div class="container text-center" style="margin-top: 30px;">
+                     <!-- 评论列表 -->
+                    {% if all_comments %}
+                    <div class="comments-list">
+                        <div class="text-center">
+                            <h4 style="font-weight:600;">已有 {{ all_comments|length }} 条评论</h4>
+                        </div>
+                        <div class="comment-item">
+                            {% for comment in all_comments %}
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span style="font-size: 3em; color: #34495e;">
+                                        <i class="fas fa-dragon"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-10">
+                                    <div style="float: left;margin-top: 10px;">
+                                        <p class="text-muted"><a href="{{ comment.url }}"
+                                                style="text-decoration: none;"><strong>{{ comment.name }}</strong></a>
+                                            {{ comment.created_time|date:"Y-m-d H:i" }}</p>
+                                    </div>
+                                    <div class="context">
+                                        <p>{{ comment.context }}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% endif %}
+                    
+                    <!-- 提交评论表单 -->
+                    <div class="comment-form" style="margin-top: 50px;">
+                        <form action="{% url 'comments:comment' article.id %}" method="post">
+                            {% csrf_token %}
+                            <h4 style="font-weight:600;">
+                                <span style="font-size: 1em; color: #34495e;">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                添加新评论
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <span style="font-size: 3em; color: #34495e;">
+                                        <i class="fas fa-smile"></i>
+                                    </span>
+                                </div>
+                                <div class="col" style="margin-top: auto; margin-bottom:auto;">
+                                    <input type="text" name="name" class="form-control" id="formGroupExampleInput"
+                                        placeholder="name">
+                                </div>
+                                <div class="col" style="margin-top: auto; margin-bottom:auto;">
+                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="example@example.com">
+                                </div>
+                                <div class="col" style="margin-top: auto; margin-bottom:auto;">
+                                    <input type="text" name="url" class="form-control" id="formGroupExampleInput"
+                                        placeholder="http://">
+                                </div>
+                            </div>
+                            <div>
+                                <textarea name="context" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                            </div>
+
+                            <div style="margin-top: 20px;">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">吐槽一下</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <hr>      
+                </div>
             </div>
         </div>
+        
+        <!-- markdown|toc -->
         <div class="col-md-4">
             <div class="article-toc">
                 <h4 class="text-muted">{{ tob |safe }}</h4>
             </div>
         </div>
     </div>
-
-
-</div>
-
-
+    
+   
 </div>
 
 {% endblock %}

@@ -77,9 +77,14 @@ height: 400px;
                                     <div class="article-tags">
                                         <p>
                                             About
-                                            php
-                                            <strong>·</strong>
-                                            dsa
+                                             {% for tag in article.tags.all %}
+                                                {% if forloop.first %}
+                                                    {{ tag.name }}
+                                                {% else %}
+                                                    <strong>·</strong>
+                                                    {{ tag.name }}
+                                                {% endif %}
+                                            {% endfor %}
                                         </p> 
                                     </div>
                                 </div>

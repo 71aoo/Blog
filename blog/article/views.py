@@ -92,4 +92,4 @@ def categories(request):
     context['Info'] = info
     context['categories'] = categories
 
-    return render(request, 'categories.html' , context)
+    return render(request, 'classify.html', context)

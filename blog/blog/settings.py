@@ -91,6 +91,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# mysql
 # pymysql.install_as_MySQLdb()
 # DATABASES = {
 #     'default': {

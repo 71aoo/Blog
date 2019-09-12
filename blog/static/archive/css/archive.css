@@ -50,3 +50,15 @@
 .article-tags p{
     padding-left: 30px;
 }
+/* ?? */
+.mao div{
+    position: fixed;
+    top: 700px;
+    right: 100px;
+}
+.next-ani{
+    transition: all 1.0s;
+}
+.next-ani:hover{
+    transform: scale(1.5);
+}

@@ -142,4 +142,13 @@ a {
 .pre-ani:hover{
     transform: scale(1.5);
 }
+/* ?? */
+.mao div{
+    position: fixed;
+    top: 800px;
+    right: 100px;
+}
+.mao div:hover{
+    
+}
 

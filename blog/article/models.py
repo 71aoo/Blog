@@ -9,7 +9,7 @@ from taggit.managers import TaggableManager
 # article
 class Articles(models.Model):
     title = models.CharField(max_length=20, verbose_name="标题", blank=False, null=False)
-    category = models.ForeignKey(Categories, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     tags = TaggableManager()
     img = models.ForeignKey(Images, on_delete=models.DO_NOTHING)
     intro = models.CharField(max_length=100, verbose_name="文章简介", blank=False, null=False, default=" A")

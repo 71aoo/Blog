@@ -3,7 +3,7 @@
 
 <!-- title -->
 {% block title %}
-Articles
+Article | {{ Info.name }}
 {% endblock %}
 
 <!-- link -->
@@ -38,7 +38,7 @@ height: 400px;
             <div class="container-fluid">
                 <!-- 文章内容 -->
                 <div class="article">
-                    <div class="article-title text-center text-muted">
+                    <div class="article-title text-center text-muted" id="heading">
                         <h1>
                             <span style="font-size: 1em; color: #34495e;">
                                 <i class="fas fa-heading"></i>
@@ -144,7 +144,7 @@ height: 400px;
                 <div class="container text-center" style="margin-top: 30px;">
                      <!-- 评论列表 -->
                     {% if all_comments %}
-                    <div class="comments-list">
+                    <div class="comments-list" id="comments-list">
                         <div class="text-center">
                             <h4 style="font-weight:600;">已有 {{ all_comments|length }} 条评论</h4>
                         </div>
@@ -176,7 +176,7 @@ height: 400px;
                     {% endif %}
                     
                     <!-- 提交评论表单 -->
-                    <div class="comment-form" style="margin-top: 50px;">
+                    <div class="comment-form" style="margin-top: 50px;" id="comment-form">
                         <form action="{% url 'comments:comment' article.id %}" method="post">
                             {% csrf_token %}
                             <h4 style="font-weight:600;">
@@ -228,6 +228,34 @@ height: 400px;
     </div>
     
    
+</div>
+<div class="mao fixed-bottom">
+    <div class="">
+        <ul style="list-style: none;">
+            <li>
+                <a style="text-decoration: none; cursor: pointer;" onclick="javascript:document.getElementById('heading').scrollIntoView({ behavior:'smooth' })" >
+                    <span style="font-size: 2em; color: #6c757d;">
+                        <i class="fas fa-rocket"></i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a style="text-decoration: none;cursor: pointer" onclick="javascript:document.getElementById('comment-list').scrollIntoView({ behavior:'smooth' })">
+                    <span style="font-size: 2em; color: #6c757d;">
+                        <i class="far fa-comments"></i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a style="text-decoration: none; cursor: pointer;" onclick="javascript:document.getElementById('comment-form').scrollIntoView({ behavior:'smooth' })">
+                    <span style="font-size: 2em; color: #6c757d;">
+                        <i class="far fa-comment-dots"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
 </div>
 
 {% endblock %}

@@ -94,3 +94,9 @@
     float: left;
     font-size: 1.3em;
 }
+/* 锚点 */
+.mao div{
+    position: fixed;
+    top: 700px;
+    right: 100px;
+}

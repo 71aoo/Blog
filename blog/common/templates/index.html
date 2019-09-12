@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="{% static 'index/css/index.css' %}">
 {% endblock  %}
 
+{% block title %}
+Index | {{ Info.name }}
+{% endblock title %}
+
+
 {% block img_height %}
 
 .header-img {
@@ -33,7 +38,7 @@ background-position:center center;
 {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container" id="article">
   <!-- article list -->
     {% for Article in Articles %}
       <div class="card text-center card-div" >
@@ -129,6 +134,20 @@ background-position:center center;
         </a> -->
 
       
+    </div>
+</div>
+<div class="mao fixed-bottom">
+    <div class="next-ani">
+        <ul style="list-style: none;">
+            <li>
+                <a style="text-decoration: none; cursor: pointer;" onclick="javascript:document.getElementById('article').scrollIntoView({ behavior:'smooth' })" >
+                    <span style="font-size: 2em; color: #6c757d;">
+                        <i class="fas fa-angle-double-up"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+
     </div>
 </div>
 {% endblock %}

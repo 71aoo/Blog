@@ -3,4 +3,4 @@ pymysql==0.9.3
 django-taggit
 Markdown
 django-mdeditor
-https://github.com/darklow/django-suit/tarball/v2
+commonmark

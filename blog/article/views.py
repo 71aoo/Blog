@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from common.models import Navbar, Info, Motto, Friends, Images, Categories
 from .models import Articles
+from django.utils.html import escape
 from django.shortcuts import get_object_or_404
 import random, markdown
+import commonmark
+
 # Create your views here.
 
 def articles(request, id):
@@ -38,12 +41,12 @@ def articles(request, id):
     md = markdown.Markdown(
         extensions=[
             'markdown.extensions.extra',
-            'markdown.extensions.codehilite',
             'markdown.extensions.toc',
         ]
     )
-    article.content = md.convert(article.content)
-
+    SS = md.convert(article.content)
+    # article.content= Markdown().convert(article.content)
+    article.content = commonmark.commonmark(article.content)
     context['Navbar'] = navbar
     context['Info'] = info
     context['article'] = article

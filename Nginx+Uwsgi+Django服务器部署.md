@@ -26,7 +26,7 @@
     yum -y upgrade //update software package
     yum -y install gcc g++
     yum -y groupinstall "Development tools"
-    yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+    yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel
     ```
 
 - 新建一个安装python3的文件夹并进入
@@ -155,7 +155,8 @@
 
   - ```linux
     sudo systemctl stop firewalld 	#close firewall temporarily
-    sudo firewall-cmd --zone=public --add-port=80/tcp --permanent 	 #pen the required ports 
+    # open the required ports 
+    sudo firewall-cmd --zone=public --add-port=80/tcp --permanent 
     sudo firewall-cmd --reload 		# reload firewall
     ```
 

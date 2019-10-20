@@ -31,7 +31,7 @@ python runserver
     - 标题
     - [Font-Awesome](https://fontawesome.com/icons)
     - 路由
-    - ![1568311329003](\md_img\1568311329003.png)
+    - ![1568311329003](.\md_img\1568311329003.png)
   - 默认5个
   - 可修改填加路由，前提是你自己加上
 - Classify页面的button颜色，需在后端添加，默认7 种颜色，具体可参考[Buttons](https://www.bootcss.com/p/buttons/)

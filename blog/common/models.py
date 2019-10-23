@@ -82,3 +82,12 @@ class Categories(models.Model):
         return self.name
 
 
+# Valine评论系统
+class Valine(models.Model):
+    appId = models.TextField(verbose_name='appId')
+    appKey = models.TextField(verbose_name='appKey')
+
+    def __str__(self):
+        return 'Valine'
+
+

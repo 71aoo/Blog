@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('article.urls')),
     path('',include('common.urls')),
-    path('',include('comments.urls')),
     path('mdeditor/', include('mdeditor.urls'))
 ]
 

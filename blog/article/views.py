@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from common.models import Navbar, Info, Motto, Friends, Images, Categories
+from common.models import Navbar, Info, Motto, Friends, Images, Categories, Valine
 from .models import Articles
 from django.utils.html import escape
 from django.shortcuts import get_object_or_404
@@ -25,9 +25,6 @@ def articles(request, id):
     article.total_views += 1
     article.save(update_fields=['total_views'])
 
-    # 获取当前文章所有评论
-    all_comments = article.comments_set.all()
-
     # 获得上下篇文章
     for i in all_articles:
         if pre_flag == 0 and i.id < id:
@@ -45,7 +42,6 @@ def articles(request, id):
         ]
     )
     SS = md.convert(article.content)
-    # article.content= Markdown().convert(article.content)
     article.content = commonmark.commonmark(article.content)
     context['Navbar'] = navbar
     context['Info'] = info
@@ -53,7 +49,7 @@ def articles(request, id):
     context['tob'] = md.toc
     context['next_article'] = next_article
     context['pre_article'] = pre_article
-    context['all_comments'] = all_comments
+    context['Valine'] = Valine.objects.first()
 
     return render(request, 'article.html',context)
 
